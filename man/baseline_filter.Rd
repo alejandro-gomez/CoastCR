@@ -2,29 +2,41 @@
 % Please edit documentation in R/baseline_filter.R
 \name{baseline_filter}
 \alias{baseline_filter}
-\title{Baseline filter}
+\title{Filter the intersections between transects and shorelines}
 \usage{
-baseline_filter(shp, position, out_points)
+baseline_filter(shp, position = "MIX", out_points)
 }
 \arguments{
-\item{shp}{Shapefile. A point format shapefile with the intersections between each transect and the coastlines.}
+\item{shp}{Shapefile. A point format shapefile with the intersections between each transect and each shoreline.}
 
-\item{position}{character. The baseline position in relation to the coastlines. The options are: offshore, put "OFF"; onshore, put "ON"; or intermediate, put "MIX".}
+\item{position}{character. Default \code{"MIX"}. \code{position = "MIX"} is recommended for use a coastline as baseline. The baseline position in relation to the coastlines. There are three options: "MIX" for intermediate baselines, "OFF" for offshore baselines, and "ON" for onshore baselines.}
 
-\item{out_points}{Integer. Output name for the resulting shapefile.}
+\item{out_points}{Integer. Output name for the filter intersection points shapefile.}
 }
 \value{
 \itemize{
-   \item{A shapefile with the filtered intersection points}
+   \item{A shapefile with the filtered intersection points, only one point for each transect/shoreline pair.}
 }
 }
 \description{
-\code{baseline_filter} allows to filter the original interesections and select only the closest intersection between each transect and coastline.
+\code{baseline_filter} allows to filter the original intersections and select only the closest intersection between each transect and coastline.
 }
 \details{
-The
+This function is part of the pre-processing stages and is used to ensure that for each baseline-transect,
+only one crossing with each date-stamped coastline is used.
+The filter selects the crossing that is closest to the baseline and neglects the others (Gomez-Pazo et al., \emph{2022}).
 }
 \examples{
 # Load data
 
+}
+\references{
+{
+Gomez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A. (2022)
+\emph{Open Digital Shoreline Analysis System: ODSAS v1.0}
+Journal of Marine Science and Engineering, 10, 26.
+}
+}
+\seealso{
+\code{\link{coast_var}}; \code{\link{coast_rates}}
 }

@@ -2,22 +2,22 @@
 % Please edit documentation in R/coast_var.R
 \name{coast_var}
 \alias{coast_var}
-\title{Coastline Variations}
+\title{Filter intersections and estimate variation rates}
 \usage{
-coast_var(shp, normals, table, position, out_points, out_name)
+coast_var(shp, normals, table, position = "MIX", out_points, out_name)
 }
 \arguments{
-\item{shp}{Shapefile. A point format shapefile with the intersections between each transect and the coastlines.}
+\item{shp}{Shapefile. A point format shapefile with the intersections between each transect and each shoreline.}
 
-\item{normals}{Shapefile. A polyline shapefile with all normal lines included in the study site.}
+\item{normals}{Shapefile. A polyline format shapefile with all normal lines (transects) included in the study site.}
 
 \item{table}{CSV. A table with the information about the coastlines dates in format (dd/mm/yyyy) and the associated uncertainty to each coastline in meters. The column names should be "Date" and "Uncertainty".}
 
-\item{position}{character. The baseline position in relation to the coastlines. The options are: offshore, put "OFF"; onshore, put "ON"; or intermediate, put "MIX".}
+\item{position}{character. Default \code{"MIX"}. \code{position = "MIX"} is recommended for use a coastline as baseline. The baseline position in relation to the coastlines. There are three options: "MIX" for intermediate baselines, "OFF" for offshore baselines, and "ON" for onshore baselines.}
 
 \item{out_points}{Integer. Output name for the filter intersection points shapefile.}
 
-\item{out_name}{Integer. Output name for the resulting shapefile with the rates to each transect.}
+\item{out_name}{Integer. Output name for the resulting shapefile with the rates of each transect.}
 }
 \value{
 \itemize{
@@ -27,12 +27,26 @@ coast_var(shp, normals, table, position, out_points, out_name)
 }
 }
 \description{
-\code{coast_var} allows to filter the original interesections and select only the closest intersection between each transect and coastline.
+\code{coast_var} allows to filter the original intersections and select only the closest intersection between each transect and shoreline.
 }
 \details{
-The
+The \code{coast_var} is the main function included in this \code{CoastCR} version, as part of ODSAS (Gomez-Pazo et al., \emph{2022}).
+This function runs \code{baseline_filter} and \code{coast_rates} to doing the entire coastal change process.
+The first step filters the intersection points, to remove the duplicate points
+and selects the crossing that is closest to the baseline and neglects the others.
+The second step estimates the main coastal variation rates explained in detail in \code{CoastCR} documentation.
 }
 \examples{
 # Load data
 
+}
+\references{
+{
+Gomez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A. (2022)
+\emph{Open Digital Shoreline Analysis System: ODSAS v1.0}
+Journal of Marine Science and Engineering, 10, 26.
+}
+}
+\seealso{
+\code{\link{baseline_filter}}; \code{\link{coast_rates}}
 }

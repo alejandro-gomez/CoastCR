@@ -2,18 +2,18 @@
 % Please edit documentation in R/coast_rates.R
 \name{coast_rates}
 \alias{coast_rates}
-\title{Coast Rates}
+\title{Calculate the coastal variation rates}
 \usage{
 coast_rates(inter_dist, normals, table, out_name)
 }
 \arguments{
-\item{inter_dist}{Shapefile. A point format shapefile with the intersections between each transect and the coastlines.}
+\item{inter_dist}{Shapefile. A point format shapefile with the intersections between each transect and the shoreline.}
 
-\item{normals}{Shapefile. A polyline shapefile with all normal lines included in the study site.}
+\item{normals}{Shapefile. A polyline format shapefile with all normal lines (transects) included in the study site.}
 
 \item{table}{CSV. A table with the information about the coastlines dates in format (dd/mm/yyyy) and the associated uncertainty to each coastline in meters. The column names should be "Date" and "Uncertainty".}
 
-\item{out_name}{Integer. Output name for the resulting shapefile with the rates to each transect.}
+\item{out_name}{Integer. Output name for the resulting shapefile with the rates of each transect.}
 }
 \value{
 \itemize{
@@ -22,12 +22,28 @@ coast_rates(inter_dist, normals, table, out_name)
 }
 }
 \description{
-\code{coast_rates} estimate the main parameters about the coastal variations.
+\code{coast_rates} estimate the main parameters about the coastal variations, as NSM, LRR or WLR.
 }
 \details{
-The
+This function is part of ODSAS method (Gomez-Pazo et al., \emph{2022}) and estimates the main five key measures for each individual transect and also produce aggregates
+for all transects identically as within the DSAS tool (Himmelstoss et al., 2018).
+The rates and their units are explained in detail in \code{CoastCR} documentation.
 }
 \examples{
 # Load data
 
+}
+\references{
+{
+Gomez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A. (2022)
+\emph{Open Digital Shoreline Analysis System: ODSAS v1.0}
+Journal of Marine Science and Engineering, 10, 26.
+
+Himmelstoss, E.A., Henderson, R.E., Kratzmann, M.G., Farris, A.S. (2018)
+\emph{Digital Shoreline Analysis System (DSAS) version 5.0 user guide}
+US Geological Survey Open File Report 2018-1179, 110 pp
+}
+}
+\seealso{
+\code{\link{baseline_filter}}; \code{\link{coast_var}}
 }

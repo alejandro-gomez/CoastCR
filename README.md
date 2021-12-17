@@ -8,7 +8,7 @@ CoastCR <img src="inst/image/logo.png" align="right" alt="" width="140" />
   
 ## Overview
 
-**CoastCR** is an open source package for computing coastline time series and trend analysis using the baseline and transect approach. This tool is a part of ODSAS(Open Digital Shoreline Analysis System v1.0) which uses both CoastCR and SAGA GIS [1]. CoastCR main input is the points representing the intersections along transects perpendicular to a baseline, of a set of date-stamped coastlines (obtained during mapping stage using SAGA GIS) and calculates the standard metrics of coastline change and rate of change similarly to the metrics produced using Digital Shoreline Analysis System (DSAS) [2].
+**CoastCR** is an open source package for computing coastline time series and trend analysis using the baseline and transect approach. This tool is a part of ODSAS (Open Digital Shoreline Analysis System v1.0) which uses both CoastCR and SAGA GIS [1]. CoastCR main input is the points representing the intersections along transects perpendicular to a baseline, of a set of date-stamped coastlines (obtained during mapping stage using SAGA GIS) and calculates the standard metrics of coastline change and rate of change similarly to the metrics produced using Digital Shoreline Analysis System (DSAS) [2, 3].
 
 ----
 
@@ -44,7 +44,7 @@ The main functions implemented in, `CoastCR` are used to:
 
 &nbsp;
 
-- ***Coastline Variations*** is the main function that runs the the aforementioned functions. First, filters the intersection points and then calculates the key measures of change.
+- ***Coastline Variations*** is the main function that runs the aforementioned functions. First, filters the intersection points and then calculates the key measures of change.
         
 ## How it works
 
@@ -64,7 +64,7 @@ Coming soon!
 
 Using CoastCR for research publication?  Please **cite it**! I'm an early career scientist and every citation matters.
 
-***Gómez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A.***, (*in press*). *Open Digital Shoreline Analysis System: ODSAS v1.0*. Journal of Marine Science and Engineering.
+***Gómez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A.***, (*2022*). *Open Digital Shoreline Analysis System: ODSAS v1.0*. Journal of Marine Science and Engineering, 10, 26. doi: https://doi.org/10.3390/jmse10010026
 
 ## Authors
 
@@ -80,7 +80,7 @@ Alejandro Gómez-Pazo: a.gomez@usc.es
 
 ## References
 
-[1] Gómez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A., (in press). Open Digital Shoreline Analysis System: ODSAS v1.0. Journal of Marine Science and Engineering.
+[1] Gómez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A., 2022. Open Digital Shoreline Analysis System: ODSAS v1.0. Journal of Marine Science and Engineering, 10, 26. doi: https://doi.org/10.3390/jmse10010026
 
 [2] Himmelstoss, E.A., Henderson, R.E., Kratzmann, M.G., Farris, A.S., 2018. Digital Shoreline Analysis System (DSAS) version 5.0 user guide. US Geological Survey Open File Report 2018-1179, 110 pp
 
