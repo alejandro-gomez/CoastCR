@@ -27,7 +27,21 @@ only one crossing with each date-stamped coastline is used.
 The filter selects the crossing that is closest to the baseline and neglects the others (Gomez-Pazo et al., \emph{2022}).
 }
 \examples{
-# Load data
+#Load libraries
+library(sf)
+library(CoastCR)
+
+#Intersections shapefile
+shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
+
+#Define baseline position. Offshore = OFF; Onshore = ON; Mixed = MIX.
+position = "OFF"
+
+#Define output name
+out_points <- "./inters_filter.shp"
+
+baseline_filter(shp, position, out_points)
+
 
 }
 \references{

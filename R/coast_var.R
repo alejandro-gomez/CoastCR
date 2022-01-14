@@ -24,7 +24,28 @@
 #'
 #'
 #' @examples
-#' # Load data
+#' #Load libraries
+#' library(sf)
+#' library(CoastCR)
+#'
+#' #Intersections shapefile
+#' shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
+#'
+#' #Normal lines shapefile
+#' normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
+#'
+#' #Table with dates and associated uncertainty
+#' table <- read.csv(system.file("./extdata/table_coastlines.csv", package = "CoastCR"))
+#'
+#' #Define baseline position. Offshore = OFF; Onshore = ON; Mixed = MIX.
+#' position = "OFF"
+#'
+#' #Define outputs names
+#' out_points <- "./int_filter.shp"
+#' out_name <- "./normals_rates.shp"
+#'
+#' coast_var(shp, normals, table, position, out_points, out_name)
+#'
 #'
 #' @references {
 #' Gomez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A. (2022)
@@ -35,7 +56,8 @@
 #'
 #' @export
 
-coast_var <- function(shp, normals, table, position = "MIX", out_points, out_name) {
+coast_var <- function(shp, normals, table, position = "MIX",
+                      out_points, out_name) {
   baseline_filter(shp, position, out_points)
 
   int_d <- st_read(out_points)

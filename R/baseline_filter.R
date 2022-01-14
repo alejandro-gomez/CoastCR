@@ -25,7 +25,21 @@
 #' @import sf dplyr tidyverse tidyr stringr
 #'
 #' @examples
-#' # Load data
+#' #Load libraries
+#' library(sf)
+#' library(CoastCR)
+#'
+#' #Intersections shapefile
+#' shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
+#'
+#' #Define baseline position. Offshore = OFF; Onshore = ON; Mixed = MIX.
+#' position = "OFF"
+#'
+#' #Define output name
+#' out_points <- "./inters_filter.shp"
+#'
+#' baseline_filter(shp, position, out_points)
+#'
 #'
 #' @export
 
@@ -36,6 +50,7 @@ baseline_filter <- function(shp, position = "MIX", out_points) {
       unite(ID_02, c("ID_Profile", "ID_Coast"))%>%
       group_by(ID_02) %>%
       dplyr::filter(Distance == max(Distance)) %>%
+      dplyr::distinct(ID_02, .keep_all = TRUE) %>%
       mutate(Normal = sub("_.*","", ID_02),
              Coast = sub(".*_","", ID_02))
     st_write(shp2, out_points)
@@ -46,6 +61,7 @@ baseline_filter <- function(shp, position = "MIX", out_points) {
       unite(ID_02, c("ID_Profile", "ID_Coast"))%>%
       group_by(ID_02) %>%
       dplyr::filter(Distance == min(Distance)) %>%
+      dplyr::distinct(ID_02, .keep_all = TRUE) %>%
       mutate(Normal = sub("_.*","", ID_02),
              Coast = sub(".*_","", ID_02))
     st_write(shp2, out_points)
@@ -56,6 +72,7 @@ baseline_filter <- function(shp, position = "MIX", out_points) {
       unite(ID_02, c("ID_Profile", "ID_Coast"))%>%
       group_by(ID_02) %>%
       dplyr::filter(abs == min(abs))%>%
+      dplyr::distinct(ID_02, .keep_all = TRUE) %>%
       mutate(Normal = sub("_.*","", ID_02),
              Coast = sub(".*_","", ID_02))
     st_write(shp2, out_points)

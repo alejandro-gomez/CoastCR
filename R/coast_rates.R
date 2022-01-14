@@ -35,7 +35,23 @@
 #' @importFrom gt gtsave
 #'
 #' @examples
-#' # Load data
+#' library(sf)
+#' library(CoastCR)
+#'
+#' #Normal lines shapefile
+#' normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
+#'
+#' #Table with dates and associated uncertainty
+#' table <- read.csv(system.file("./extdata/table_coastlines.csv", package = "CoastCR"))
+#'
+#' #Filtered intersections shapefile
+#' inter_dist <- st_read(system.file("./extdata/dist.shp", package = "CoastCR"))
+#'
+#' #Define output name
+#' out_name <- "./normals_coast_rates.shp"
+#'
+#' coast_rates(inter_dist, normals, table, out_name)
+#'
 #'
 #' @export
 
@@ -60,19 +76,23 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
     names(a) <- c("Normal", paste("D", table$Date[i], sep = "_"))
     assign(paste("Y", table$Date[i], sep = "_"), a)
     list1[[i]] <- a
-    yrs <- Reduce(function(...) merge(..., by="Normal", all=T), list1)
+    yrs <- Reduce(function(...) merge(..., by="Normal", all = TRUE), list1)
   }
   mm_Dates <- c(paste("D", min(table$Date), sep = "_"),
                 paste("D", max(table$Date), sep = "_"))
   SCE_val <- NULL
   normals2 <- normals %>%
     dplyr::select(1)%>%
-    merge(yrs, by = "Normal", all.x = T)%>%
+    merge(yrs, by = "Normal", all.x = TRUE)%>%
     mutate(NSM = (get(mm_Dates[2]) - get(mm_Dates[1])),
-           EPR = NSM / (as.numeric(abs(difftime(min(table$Date), max(table$Date), units = "days")/365))),
-           EPRunc = (sqrt((as.numeric(table$Uncertainty[table$Date==max(table$Date)])^2) +
-                            (as.numeric(table$Uncertainty[table$Date==min(table$Date)])^2)))/
-             (as.numeric(abs(difftime(min(table$Date), max(table$Date), units = "days")/365)))) %>%
+           EPR = NSM / (as.numeric(abs(difftime(min(table$Date),
+                                   max(table$Date), units = "days")/365))),
+           EPRunc = (sqrt((as.numeric(
+             table$Uncertainty[table$Date==max(table$Date)])^2) +
+             (as.numeric(
+              table$Uncertainty[table$Date==min(table$Date)])^2)))/
+             (as.numeric(abs(difftime(min(table$Date), max(table$Date),
+                                      units = "days")/365)))) %>%
     dplyr::select(Normal, NSM, EPR, EPRunc, everything())
 
   list2 <- NULL
@@ -82,7 +102,7 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
            SCE_min = do.call(pmin, c(select(., 5:ncol(.)), na.rm = TRUE)),
            SCE = abs(SCE_max - SCE_min)) %>%
     dplyr::select(Normal, SCE)
-  normals3 <- merge(normals2, SCE_comp, by="Normal", all=T) %>%
+  normals3 <- merge(normals2, SCE_comp, by="Normal", all = TRUE) %>%
     dplyr::select(Normal, NSM, EPR, EPRunc, SCE, everything())
 
   list3 <- NULL
@@ -103,9 +123,10 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
         Dist_c <- normals3[z,] %>%
           st_drop_geometry() %>%
           mutate(Date_C = as.numeric(abs(difftime(min(table$Date),
-                                                  table$Date[k], units = "days")/365)),
-                 Distance_C = as.numeric(get(paste("D", table$Date[k], sep = "_")) -
-                                           get(paste("D", min(table$Date), sep = "_"))),
+                          table$Date[k], units = "days")/365)),
+                 Distance_C = as.numeric(get(paste("D", table$Date[k],
+                              sep = "_")) -
+                              get(paste("D", min(table$Date), sep = "_"))),
                  w_C = 1/(as.numeric(table$Uncertainty[k])^2)) %>%
           dplyr::select(Normal, Date_C, Distance_C, w_C)
         assign(paste("Dist_n", table$Date[k], sep = "_"), Dist_c)
@@ -115,8 +136,8 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
       }
       St_P <- rbind(St_P, na.omit(list3))
     }
-    mean_Date <- mean(St_P$Date_C, na.rm = T)
-    mean_Dist <- mean(St_P$Distance_C, na.rm = T)
+    mean_Date <- mean(St_P$Date_C, na.rm = TRUE)
+    mean_Dist <- mean(St_P$Distance_C, na.rm = TRUE)
     SS <- 0
     SCP <- 0
     totalSS <- 0
@@ -164,8 +185,8 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
 
   normals4 %>% select(NSM, EPR, SCE, LRR, WLR) %>% st_drop_geometry()%>%
     tbl_summary(type = all_continuous() ~ "continuous2",
-                statistic = list(all_continuous() ~ c("{mean}", "{sd}",
-                                                      "{min}", "{median}", "{max}")),
+                statistic = list(all_continuous() ~ c("{mean}", "{sd}", "{min}",
+                                                    "{median}", "{max}")),
                 digits = all_continuous() ~ 3, missing = "no") %>%
     modify_header(label ~ "**Parameters**") %>% bold_labels() %>% as_gt() %>%
     gt::gtsave(filename = paste(gsub(".shp*$","", out_name), ".png"))

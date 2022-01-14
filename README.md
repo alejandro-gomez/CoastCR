@@ -1,4 +1,4 @@
-CoastCR <img src="inst/image/logo.png" align="right" alt="" width="140" />
+CoastCR <img src="man/figures/logo.png" align="right" alt="" width="140" />
 =========================================================
 # `CoastCR`: Coastal Change using R
 
@@ -17,7 +17,7 @@ Contents:
 * [What is this package used for?](#what-is-this-package-used-for)
 * [How it works](#how-it-works)
   * [Installation](#installation)
-  * [Examples](#examples)
+  * [Example](#example)
 * [Package citation](#package-citation)
 * [Authors](#authors)
 * [Contact](#contact)
@@ -56,9 +56,32 @@ The main functions implemented in, `CoastCR` are used to:
 remotes::install_github("alejandro-gomez/CoastCR")
 ```
 
-### Examples
+### Example
 
-Coming soon!
+``` r
+# Load libraries
+library(sf)
+library(CoastCR)
+
+# Intersections shapefile
+shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
+
+# Normal lines shapefile
+normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
+
+# Table with dates and associated uncertainty
+table <- read.csv(system.file("./extdata/table_coastlines.csv", package = "CoastCR"))
+
+# Define baseline position. Offshore = OFF; Onshore = ON; Mixed = MIX.
+position = "OFF"
+
+# Define outputs names
+out_points <- "./int_filter.shp"
+out_name <- "./normals_rates.shp"
+
+
+coast_var(shp, normals, table, position, out_points, out_name)
+```
 
 ## Package citation
 

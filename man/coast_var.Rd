@@ -37,7 +37,28 @@ and selects the crossing that is closest to the baseline and neglects the others
 The second step estimates the main coastal variation rates explained in detail in \code{CoastCR} documentation.
 }
 \examples{
-# Load data
+#Load libraries
+library(sf)
+library(CoastCR)
+
+#Intersections shapefile
+shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
+
+#Normal lines shapefile
+normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
+
+#Table with dates and associated uncertainty
+table <- read.csv(system.file("./extdata/table_coastlines.csv", package = "CoastCR"))
+
+#Define baseline position. Offshore = OFF; Onshore = ON; Mixed = MIX.
+position = "OFF"
+
+#Define outputs names
+out_points <- "./int_filter.shp"
+out_name <- "./normals_rates.shp"
+
+coast_var(shp, normals, table, position, out_points, out_name)
+
 
 }
 \references{
