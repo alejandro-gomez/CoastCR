@@ -85,7 +85,7 @@ coast_var(shp, normals, table, position, out_points, out_name)
 
 ## Package citation
 
-Using CoastCR for research publication?  Please **cite it**! I'm an early career scientist and every citation matters.
+Using CoastCR for research publication?  Please **cite it**! I am an early career scientist and every citation matters.
 
 ***Gómez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A.***, (*2022*). *Open Digital Shoreline Analysis System: ODSAS v1.0*. Journal of Marine Science and Engineering, 10, 26. doi: https://doi.org/10.3390/jmse10010026
 
