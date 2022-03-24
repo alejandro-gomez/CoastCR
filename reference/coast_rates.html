@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">CoastCR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <ul><li><p>A polyline shapefile with all rates associated to each transect.</p></li>
-<li><p>A table in png format with the central tendency stats for each parameter.</p></li>
+<li><p>A csv file with the central tendency stats and quantiles .25, .75 and .90 for each parameter.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -123,7 +123,6 @@ US Geological Survey Open File Report 2018-1179, 110 pp</p>
 <span class="r-in"><span class="va">out_name</span> <span class="op">&lt;-</span> <span class="st">"./normals_coast_rates.shp"</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">coast_rates</span><span class="op">(</span><span class="va">inter_dist</span>, <span class="va">normals</span>, <span class="va">table</span>, <span class="va">out_name</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> It seems that the version of `phantomjs` installed is greater than or equal to the requested version.To install the requested version or downgrade to another version, use `force = TRUE`.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Writing layer `normals_coast_rates' to data source </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   `./normals_coast_rates.shp' using driver `ESRI Shapefile'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Writing 16 features with 9 fields and geometry type Line String.</span>
