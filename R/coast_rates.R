@@ -14,7 +14,7 @@
 #'
 #' @return \itemize{
 #'    \item{A polyline shapefile with all rates associated to each transect.}
-#'    \item{A table in png format with the central tendency stats for each parameter.}
+#'    \item{A csv file with the central tendency stats and quantiles .25, .75 and .90 for each parameter.}
 #' }
 #'
 #' @references {
@@ -28,11 +28,12 @@
 #'}
 #' @seealso  \code{\link{baseline_filter}}; \code{\link{coast_var}}
 #'
-#' @import qwraps2 gtsummary webshot
+#' @import qwraps2
 #'
 #' @importFrom stats dist
 #' @importFrom stats na.omit
-#' @importFrom gt gtsave
+#' @importFrom utils write.csv
+#' @importFrom psych describe
 #'
 #' @examples
 #' library(sf)
@@ -57,11 +58,6 @@
 
 
 coast_rates <- function(inter_dist, normals, table, out_name) {
-  webshot::install_phantomjs(
-    version = "2.1.1",
-    baseURL = "https://github.com/wch/webshot/releases/download/v0.3.1/",
-    force = FALSE)
-
   table$Date <- as.Date(table$Date, "%d/%m/%Y")
   list1 <- NULL
   for (i in 1:nrow(table)){
@@ -183,11 +179,13 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
                              "SCE", "LRR", "LR2", "WLR", "WR2")
   st_write(normals4, out_name) #Export the new shapefile.
 
-  normals4 %>% select(NSM, EPR, SCE, LRR, WLR) %>% st_drop_geometry()%>%
-    tbl_summary(type = all_continuous() ~ "continuous2",
-                statistic = list(all_continuous() ~ c("{mean}", "{sd}", "{min}",
-                                                    "{median}", "{max}")),
-                digits = all_continuous() ~ 3, missing = "no") %>%
-    modify_header(label ~ "**Parameters**") %>% bold_labels() %>% as_gt() %>%
-    gt::gtsave(filename = paste(gsub(".shp*$","", out_name), ".png"))
+  n4 <- normals4%>%
+    st_drop_geometry()
+  summary_data <- describe(n4[ ,c("NSM", "EPR", "EPRunc", "SCE", "LRR", "WLR")],
+                           quant = c(.25,.75,.90)) %>%
+    dplyr::select("n", "mean", "sd", "median", "min", "max", "range",
+                  "Q0.25", "Q0.75", "Q0.9")
+  names(summary_data) <- c("n", "Mean", "SD", "Median", "min", "Max", "Range",
+                           "Quantile .25", "Quantile .75", "Quantile .9")
+  write.csv(summary_data, paste(gsub(".shp*$","", out_name), ".csv"))
 }

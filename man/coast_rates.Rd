@@ -18,7 +18,7 @@ coast_rates(inter_dist, normals, table, out_name)
 \value{
 \itemize{
    \item{A polyline shapefile with all rates associated to each transect.}
-   \item{A table in png format with the central tendency stats for each parameter.}
+   \item{A csv file with the central tendency stats and quantiles .25, .75 and .90 for each parameter.}
 }
 }
 \description{

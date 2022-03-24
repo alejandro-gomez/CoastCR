@@ -10,6 +10,13 @@ CoastCR <img src="man/figures/logo.png" align="right" alt="" width="140" />
 
 **CoastCR** is an open source package for computing coastline time series and trend analysis using the baseline and transect approach. This tool is a part of ODSAS (Open Digital Shoreline Analysis System v1.0) which uses both CoastCR and SAGA GIS [1]. CoastCR main input is the points representing the intersections along transects perpendicular to a baseline, of a set of date-stamped coastlines (obtained during mapping stage using SAGA GIS) and calculates the standard metrics of coastline change and rate of change similarly to the metrics produced using Digital Shoreline Analysis System (DSAS) [2, 3].
 
+## Current version
+
+**CoastCR 1.1.0**.
+
+This version generates the summary the main statistical parameters in a csv file and include quantiles .25, .75 and .90 information for each parameter.
+
+
 ----
 
 Contents:
