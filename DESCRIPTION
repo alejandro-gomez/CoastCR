@@ -9,7 +9,8 @@ Authors@R: c(
 Maintainer: Alejandro Gomez-Pazo <a.gomez@usc.es>
 Description: Computing coastline time series and trend analysis using the baseline and transect approach. This tool is a part of ODSAS (Open Digital Shoreline Analysis System v1.0).
 License: GPL (>=3)
-URL: https://github.com/alejandro-gomez/CoastCR
+URL: https://github.com/alejandro-gomez/CoastCR,
+    https://alejandro-gomez.github.io/CoastCR/
 BugReports: https://github.com/alejandro-gomez/CoastCR/issues
 Encoding: UTF-8
 LazyData: true

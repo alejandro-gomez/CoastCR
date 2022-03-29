@@ -1,0 +1,17 @@
+citHeader("To cite CoastCR in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "Open Digital Shoreline Analysis System: ODSAS v1.0",
+  author   = "Alejandro Gómez-Pazo and Andres Payo and María V. Paz-Delgado and Miguel A. Delgadillo-Calzadilla",
+  journal  = "Journal of Marine Science and Engineering",
+  year     = "2022",
+  volume   = "10",
+  number   = "1",
+  pages    = "26",
+  url      = "https://doi.org/10.3390/jmse10010026",
+  textVersion = paste("Gómez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A., 2022. Open Digital Shoreline Analysis System: ODSAS v1.0",
+	"Journal of Marine Science and Engineering, 10: 26."
+
+  )
+)
