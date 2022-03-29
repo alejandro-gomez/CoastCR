@@ -2,5 +2,8 @@ pandoc: 2.7.3
 pkgdown: 2.0.2
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-03-24T12:43Z
+last_built: 2022-03-29T09:00Z
+urls:
+  reference: https://alejandro-gomez.github.io/CoastCR/reference
+  article: https://alejandro-gomez.github.io/CoastCR/articles
 

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://alejandro-gomez.github.io/CoastCR/404.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://alejandro-gomez.github.io/CoastCR/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://alejandro-gomez.github.io/CoastCR/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://alejandro-gomez.github.io/CoastCR/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/baseline_filter.html</loc>
+    <loc>https://alejandro-gomez.github.io/CoastCR/reference/baseline_filter.html</loc>
   </url>
   <url>
-    <loc>/reference/coast_rates.html</loc>
+    <loc>https://alejandro-gomez.github.io/CoastCR/reference/coast_rates.html</loc>
   </url>
   <url>
-    <loc>/reference/coast_var.html</loc>
+    <loc>https://alejandro-gomez.github.io/CoastCR/reference/coast_var.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://alejandro-gomez.github.io/CoastCR/reference/index.html</loc>
   </url>
 </urlset>
