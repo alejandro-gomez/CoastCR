@@ -25,6 +25,7 @@
 #' @import sf dplyr tidyverse tidyr stringr
 #'
 #' @examples
+#' \dontrun{
 #' #Load libraries
 #' library(sf)
 #' library(CoastCR)
@@ -39,7 +40,7 @@
 #' out_points <- "./inters_filter.shp"
 #'
 #' baseline_filter(shp, position, out_points)
-#'
+#' }
 #'
 #' @export
 

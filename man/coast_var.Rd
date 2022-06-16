@@ -37,6 +37,7 @@ and selects the crossing that is closest to the baseline and neglects the others
 The second step estimates the main coastal variation rates explained in detail in \code{CoastCR} documentation.
 }
 \examples{
+\dontrun{
 #Load libraries
 library(sf)
 library(CoastCR)
@@ -58,7 +59,7 @@ out_points <- "./int_filter.shp"
 out_name <- "./normals_rates.shp"
 
 coast_var(shp, normals, table, position, out_points, out_name)
-
+}
 
 }
 \references{

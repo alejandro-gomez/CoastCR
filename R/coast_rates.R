@@ -36,6 +36,7 @@
 #' @importFrom psych describe
 #'
 #' @examples
+#' \dontrun{
 #' library(sf)
 #' library(CoastCR)
 #'
@@ -52,7 +53,7 @@
 #' out_name <- "./normals_coast_rates.shp"
 #'
 #' coast_rates(inter_dist, normals, table, out_name)
-#'
+#' }
 #'
 #' @export
 
@@ -187,5 +188,5 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
                   "Q0.25", "Q0.75", "Q0.9")
   names(summary_data) <- c("n", "Mean", "SD", "Median", "min", "Max", "Range",
                            "Quantile .25", "Quantile .75", "Quantile .9")
-  write.csv(summary_data, paste(gsub(".shp*$","", out_name), ".csv"))
+  write.csv(summary_data, paste(gsub(".shp*$","_summary",out_name),".csv"))
 }

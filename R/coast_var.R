@@ -24,6 +24,7 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' #Load libraries
 #' library(sf)
 #' library(CoastCR)
@@ -45,7 +46,7 @@
 #' out_name <- "./normals_rates.shp"
 #'
 #' coast_var(shp, normals, table, position, out_points, out_name)
-#'
+#' }
 #'
 #' @references {
 #' Gomez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A. (2022)

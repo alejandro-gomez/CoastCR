@@ -30,6 +30,7 @@ for all transects identically as within the DSAS tool (Himmelstoss et al., 2018)
 The rates and their units are explained in detail in \code{CoastCR} documentation.
 }
 \examples{
+\dontrun{
 library(sf)
 library(CoastCR)
 
@@ -46,7 +47,7 @@ inter_dist <- st_read(system.file("./extdata/dist.shp", package = "CoastCR"))
 out_name <- "./normals_coast_rates.shp"
 
 coast_rates(inter_dist, normals, table, out_name)
-
+}
 
 }
 \references{
