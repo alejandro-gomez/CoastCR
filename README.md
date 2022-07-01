@@ -9,7 +9,7 @@ CoastCR <img src="man/figures/logo.png" align="right" alt="" width="140" />
   
 ## Overview
 
-**CoastCR** is an open source package for computing coastline time series and trend analysis using the baseline and transect approach. This tool is a part of ODSAS (Open Digital Shoreline Analysis System v1.0) which uses both CoastCR and SAGA GIS [1]. CoastCR main input is the points representing the intersections along transects perpendicular to a baseline, of a set of date-stamped coastlines (obtained during mapping stage using SAGA GIS) and calculates the standard metrics of coastline change and rate of change similarly to the metrics produced using Digital Shoreline Analysis System (DSAS) [2, 3]. Package website: https://alejandro-gomez.github.io/CoastCR/
+**CoastCR** is an open source package for computing coastline time series and trend analysis using the baseline and transect approach. This tool is a part of ODSAS (Open Digital Shoreline Analysis System v1.0) which uses both CoastCR and SAGA GIS [1, 2]. CoastCR main input is the points representing the intersections along transects perpendicular to a baseline, of a set of date-stamped coastlines (obtained during mapping stage using SAGA GIS) and calculates the standard metrics of coastline change and rate of change similarly to the metrics produced using Digital Shoreline Analysis System (DSAS) [3, 4]. Package website: https://alejandro-gomez.github.io/CoastCR/
 
 ## Current version
 
@@ -99,11 +99,9 @@ Using CoastCR for research publication?  Please **cite it**! I am an early caree
 
 ## Authors
 
-Alejandro Gómez-Pazo
+Alejandro Gómez-Pazo, Andres Payo and M. Victoria Paz-Delgado
 
-M. Victoria Paz-Delgado
-
-Contributors: Andres Payo and M.A. Delgadillo-Calzadilla
+Contributors: M.A. Delgadillo-Calzadilla
 
 ## Contact
 
@@ -113,6 +111,8 @@ Alejandro Gómez-Pazo: a.gomez@usc.es
 
 [1] Gómez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A., 2022. Open Digital Shoreline Analysis System: ODSAS v1.0. Journal of Marine Science and Engineering, 10, 26. doi: https://doi.org/10.3390/jmse10010026
 
-[2] Himmelstoss, E.A., Henderson, R.E., Kratzmann, M.G., Farris, A.S., 2018. Digital Shoreline Analysis System (DSAS) version 5.0 user guide. US Geological Survey Open File Report 2018-1179, 110 pp
+[2] Paz-Delgado, MV., Payo, A., Gómez-Pazo, A., Beck, A-L., Savastano, S., 2022. Shoreline Change from Optical and Sar Satellite Imagery at Macro-Tidal Estuarine, Cliffed Open-Coast and Gravel Pocket-Beach Environments. Journal of Marine Science and Engineering, 10(5), 561. doi: https://doi.org/10.3390/jmse10050561
 
-[3] Burningham, H.; Fernandez-Nunez, M. 19 - shoreline change analysis. In Sandy beach morphodynamics, Jackson, D.W.T.; Short, A.D., Eds. Elsevier: 2020; pp 439-460.
+[3] Himmelstoss, E.A., Henderson, R.E., Kratzmann, M.G., Farris, A.S., 2018. Digital Shoreline Analysis System (DSAS) version 5.0 user guide. US Geological Survey Open File Report 2018-1179, 110 pp
+
+[4] Burningham, H.; Fernandez-Nunez, M. 19 - shoreline change analysis. In Sandy beach morphodynamics, Jackson, D.W.T.; Short, A.D., Eds. Elsevier: 2020; pp 439-460.
