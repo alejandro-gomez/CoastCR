@@ -7,11 +7,11 @@ test_that("baseline_filter", {
 
   position = "OFF"
 
-  out_points <- "./inters_filter.shp"
+  out_points <- "./inters_filter1.shp"
 
   baseline_filter(shp, position, out_points)
 
-  res <- st_read("./inters_filter.shp")
+  res <- st_read("./inters_filter1.shp")
 
   expect_equal(res, dist)
 

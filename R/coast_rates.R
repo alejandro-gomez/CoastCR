@@ -36,7 +36,6 @@
 #' @importFrom psych describe
 #'
 #' @examples
-#' \dontrun{
 #' library(sf)
 #' library(CoastCR)
 #'
@@ -50,10 +49,10 @@
 #' inter_dist <- st_read(system.file("./extdata/dist.shp", package = "CoastCR"))
 #'
 #' #Define output name
-#' out_name <- "./normals_coast_rates.shp"
+#' out_name <- tempfile("normals_coast_rates", fileext = ".shp")
 #'
 #' coast_rates(inter_dist, normals, table, out_name)
-#' }
+#'
 #'
 #' @export
 

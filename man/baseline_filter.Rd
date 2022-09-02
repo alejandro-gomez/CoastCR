@@ -27,7 +27,7 @@ only one crossing with each date-stamped coastline is used.
 The filter selects the crossing that is closest to the baseline and neglects the others (Gomez-Pazo et al., \emph{2022}).
 }
 \examples{
-\dontrun{
+
 #Load libraries
 library(sf)
 library(CoastCR)
@@ -39,10 +39,9 @@ shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
 position = "OFF"
 
 #Define output name
-out_points <- "./inters_filter.shp"
+out_points <- tempfile("inters_filter", fileext = ".shp")
 
 baseline_filter(shp, position, out_points)
-}
 
 }
 \references{

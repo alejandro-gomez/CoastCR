@@ -37,10 +37,11 @@ and selects the crossing that is closest to the baseline and neglects the others
 The second step estimates the main coastal variation rates explained in detail in \code{CoastCR} documentation.
 }
 \examples{
-\dontrun{
+
 #Load libraries
 library(sf)
 library(CoastCR)
+
 
 #Intersections shapefile
 shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
@@ -55,11 +56,11 @@ table <- read.csv(system.file("./extdata/table_coastlines.csv", package = "Coast
 position = "OFF"
 
 #Define outputs names
-out_points <- "./int_filter.shp"
-out_name <- "./normals_rates.shp"
+out_points <- tempfile("int_filter", fileext = ".shp")
+out_name <- tempfile("normals_rates", fileext = ".shp")
 
 coast_var(shp, normals, table, position, out_points, out_name)
-}
+
 
 }
 \references{

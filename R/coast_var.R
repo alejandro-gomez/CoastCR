@@ -24,10 +24,11 @@
 #'
 #'
 #' @examples
-#' \dontrun{
+#'
 #' #Load libraries
 #' library(sf)
 #' library(CoastCR)
+#'
 #'
 #' #Intersections shapefile
 #' shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
@@ -42,11 +43,11 @@
 #' position = "OFF"
 #'
 #' #Define outputs names
-#' out_points <- "./int_filter.shp"
-#' out_name <- "./normals_rates.shp"
+#' out_points <- tempfile("int_filter", fileext = ".shp")
+#' out_name <- tempfile("normals_rates", fileext = ".shp")
 #'
 #' coast_var(shp, normals, table, position, out_points, out_name)
-#' }
+#'
 #'
 #' @references {
 #' Gomez-Pazo, A., Payo, A., Paz-Delgado, M.V., Delgadillo-Calzadilla, M.A. (2022)

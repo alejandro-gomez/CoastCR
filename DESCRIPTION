@@ -1,7 +1,7 @@
 Package: CoastCR
 Type: Package
 Version: 1.1.0
-Title: Coastal Changes Estimation based on baseline and transect approach
+Title: Coastal Changes Estimation Based on Baseline and Transect Approach
 Authors@R: c(
   person("Alejandro", "Gomez-Pazo", , "a.gomez@usc.es", role = c("aut", "cre"),
   comment = c(ORCID = "0000-0002-7974-3207")),
@@ -19,7 +19,7 @@ URL: https://github.com/alejandro-gomez/CoastCR,
 BugReports: https://github.com/alejandro-gomez/CoastCR/issues
 Encoding: UTF-8
 Imports: sf, dplyr, tidyverse, tidyr, stringr, qwraps2, psych
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Suggests: 
     spelling,
     testthat (>= 3.0.0)

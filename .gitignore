@@ -2,4 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.CRAN-SUBMISSION
+._pkgdown.yml
+.cran-comments.md
 docs
