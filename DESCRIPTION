@@ -2,9 +2,9 @@ Package: CoastCR
 Type: Package
 Version: 1.2.0
 Title: Coastal Changes Estimation Based on Baseline and Transect Approach
-Authors@R: 
-    person("Alejandro", "Gomez-Pazo", email = "a.gomez@usc.es", role = c("aut", "cre"),
-        comment = c(ORCID = "0000-0002-7974-3207")),
+Authors@R: c(
+    person("Alejandro", "Gomez-Pazo", , "a.gomez@usc.es", role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-7974-3207")),,
     person("Andres", "Payo", email = "agarcia@bgs.ac.uk", role = c("aut"),
         comment = c(ORCID = "0000-0001-5596-3953")),
     person("M.Victoria", "Paz-Delgado", role = "aut")
