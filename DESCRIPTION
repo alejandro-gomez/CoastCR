@@ -17,7 +17,7 @@ License: GPL (>= 3)
 URL: https://github.com/alejandro-gomez/CoastCR
 BugReports: https://github.com/alejandro-gomez/CoastCR/issues
 Encoding: UTF-8
-Imports: sf, dplyr, tidyverse, tidyr, stringr, qwraps2, psych
+Imports: sf, dplyr, tidyverse, tidyr, stringr, qwraps2, pak, psych
 RoxygenNote: 7.2.3
 Suggests: 
     spelling,
