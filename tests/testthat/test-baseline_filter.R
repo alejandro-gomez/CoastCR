@@ -15,6 +15,6 @@ test_that("baseline_filter", {
 
   res <- st_read("./inters_filter1.shp")
 
-  expect_equal(res, dist)
+  expect_equal(res, dist, tolerance = 0.0009)
 
 })

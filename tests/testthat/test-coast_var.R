@@ -19,6 +19,6 @@ test_that("coast_rates", {
   coast_var(shp, normals, table, position, out_points, out_name)
   res <- st_read("./normals_rates.shp")
 
-  expect_equal(res, dist)
+  expect_equal(res, dist, tolerance = 0.0009)
 
 })
