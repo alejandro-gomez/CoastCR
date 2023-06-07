@@ -4,7 +4,7 @@
 #'
 #' @param inter_dist Shapefile. A point format shapefile with the intersections between each transect and the shoreline.
 #' @param normals Shapefile. A polyline format shapefile with all normal lines (transects) included in the study site.
-#' @param table CSV. A table with the information about the coastlines day acquisition in format (YYYYY-mm-dd), it it is available the Hour in format (HH:MM:SS) and the associated uncertainty to each coastline in meters. The column names should be "Day", "Hour" and "Uncertainty". If the data do not include Hour remove the column to avoid possible errors.
+#' @param table CSV. A table with the information about the coastlines dates in a column named "Day" in format (YYYYY-mm-dd). If the information about the acquisition hour is available, the user should introduce a column called "Hour" in format (HH:MM:SS) and the associated uncertainty to each coastline in meters. The column names should be "Day", "Hour" and "Uncertainty".
 #' @param out_name Integer. Output name for the resulting shapefile with the rates of each transect.
 #'
 #' @details

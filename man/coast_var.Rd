@@ -11,7 +11,7 @@ coast_var(shp, normals, table, position = "MIX", out_points, out_name)
 
 \item{normals}{Shapefile. A polyline format shapefile with all normal lines (transects) included in the study site.}
 
-\item{table}{CSV. A table with the information about the coastlines dates in format (dd/mm/yyyy) and the associated uncertainty to each coastline in meters. The column names should be "Date" and "Uncertainty".}
+\item{table}{CSV. A table with the information about the coastlines dates in a column named "Day" in format (YYYYY-mm-dd). If the information about the acquisition hour is available, the user should introduce a column called "Hour" in format (HH:MM:SS) and the associated uncertainty to each coastline in meters. The column names should be "Day", "Hour" and "Uncertainty".}
 
 \item{position}{character. Default \code{"MIX"}. \code{position = "MIX"} is recommended for use a coastline as baseline. The baseline position in relation to the coastlines. There are three options: "MIX" for intermediate baselines, "OFF" for offshore baselines, and "ON" for onshore baselines.}
 
