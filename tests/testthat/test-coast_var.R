@@ -1,6 +1,8 @@
 test_that("coast_rates", {
   testthat::skip_on_cran()
 
+  setwd(tempdir())
+
   dist <- st_read(system.file("./extdata/normals_coast_rates.shp", package = "CoastCR"))
 
   shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))

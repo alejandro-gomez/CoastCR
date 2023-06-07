@@ -4,7 +4,7 @@
 #'
 #' @param inter_dist Shapefile. A point format shapefile with the intersections between each transect and the shoreline.
 #' @param normals Shapefile. A polyline format shapefile with all normal lines (transects) included in the study site.
-#' @param table CSV. A table with the information about the coastlines dates in format (dd/mm/yyyy) and the associated uncertainty to each coastline in meters. The column names should be "Date" and "Uncertainty".
+#' @param table CSV. A table with the information about the coastlines day acquisition in format (YYYYY-mm-dd), it it is available the Hour in format (HH:MM:SS) and the associated uncertainty to each coastline in meters. The column names should be "Day", "Hour" and "Uncertainty". If the data do not include Hour remove the column to avoid possible errors.
 #' @param out_name Integer. Output name for the resulting shapefile with the rates of each transect.
 #'
 #' @details
@@ -38,6 +38,7 @@
 #' @examples
 #' library(sf)
 #' library(CoastCR)
+#' setwd(tempdir())
 #'
 #' #Normal lines shapefile
 #' normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
@@ -56,9 +57,13 @@
 #'
 #' @export
 
-
 coast_rates <- function(inter_dist, normals, table, out_name) {
-  table$Date <- as.Date(table$Date, "%d/%m/%Y")
+  if ("Hour" %in% colnames(table)) {
+    table$Date <- as.POSIXlt(paste(table$Day, table$Hour, sep = ""), format = "%Y-%m-%d %H:%M:%S")
+  } else {
+    table$Date <- as.POSIXlt(table$Day, format = "%Y-%m-%d")
+  }
+
   list1 <- NULL
   for (i in 1:nrow(table)){
     name_d <- paste("D", table$Date[i], sep = "_")
@@ -82,11 +87,11 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
     merge(yrs, by = "Normal", all.x = TRUE)%>%
     mutate(NSM = (get(mm_Dates[2]) - get(mm_Dates[1])),
            EPR = NSM / (as.numeric(abs(difftime(min(table$Date),
-                                   max(table$Date), units = "days")/365))),
+                                                max(table$Date), units = "days")/365))),
            EPRunc = (sqrt((as.numeric(
              table$Uncertainty[table$Date==max(table$Date)])^2) +
-             (as.numeric(
-              table$Uncertainty[table$Date==min(table$Date)])^2)))/
+               (as.numeric(
+                 table$Uncertainty[table$Date==min(table$Date)])^2)))/
              (as.numeric(abs(difftime(min(table$Date), max(table$Date),
                                       units = "days")/365)))) %>%
     dplyr::select(Normal, NSM, EPR, EPRunc, everything())
@@ -107,7 +112,7 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
     St_P <- NULL
     for (k in 1:nrow(table)){
       if (ancient == paste("D", table$Date[k], sep = "_")){
-        Dist_c <- normals3[z,] %>%
+        Dist_c <- normals[z,] %>%
           st_drop_geometry() %>%
           mutate(Date_C = as.numeric(0),
                  Distance_C = as.numeric(0),
@@ -119,16 +124,16 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
         Dist_c <- normals3[z,] %>%
           st_drop_geometry() %>%
           mutate(Date_C = as.numeric(abs(difftime(min(table$Date),
-                          table$Date[k], units = "days")/365)),
+                                                  table$Date[k], units = "days")/365)),
                  Distance_C = as.numeric(get(paste("D", table$Date[k],
-                              sep = "_")) -
-                              get(paste("D", min(table$Date), sep = "_"))),
+                                                   sep = "_")) -
+                                           get(paste("D", min(table$Date), sep = "_"))),
                  w_C = 1/(as.numeric(table$Uncertainty[k])^2)) %>%
           dplyr::select(Normal, Date_C, Distance_C, w_C)
         assign(paste("Dist_n", table$Date[k], sep = "_"), Dist_c)
         list3 <- Dist_c
       } else{
-        print("ERROR")
+        stop("Dates information is not correct, check date format.")
       }
       St_P <- rbind(St_P, na.omit(list3))
     }
@@ -176,8 +181,8 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
   }
   normals4 <- normals3 %>%
     dplyr::select("Normal", "NSM", "EPR", "EPRunc",
-                             "SCE", "LRR", "LR2", "WLR", "WR2")
-  st_write(normals4, out_name) #Export the new shapefile.
+                  "SCE", "LRR", "LR2", "WLR", "WR2")
+  st_write(normals4, out_name)
 
   n4 <- normals4%>%
     st_drop_geometry()
@@ -187,5 +192,5 @@ coast_rates <- function(inter_dist, normals, table, out_name) {
                   "Q0.25", "Q0.75", "Q0.9")
   names(summary_data) <- c("n", "Mean", "SD", "Median", "min", "Max", "Range",
                            "Quantile .25", "Quantile .75", "Quantile .9")
-  write.csv(summary_data, paste(gsub(".shp*$","_summary",out_name),".csv"))
+  write.csv(summary_data, paste0(gsub(".shp*$","_summary",out_name),".csv"))
 }

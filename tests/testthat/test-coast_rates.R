@@ -1,6 +1,8 @@
 test_that("coast_rates", {
   testthat::skip_on_cran()
 
+  setwd(tempdir())
+
   normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
 
   table <- read.csv(system.file("./extdata/table_coastlines.csv", package = "CoastCR"))

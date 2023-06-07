@@ -29,6 +29,7 @@
 #' #Load libraries
 #' library(sf)
 #' library(CoastCR)
+#' setwd(tempdir())
 #'
 #' #Intersections shapefile
 #' shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
@@ -78,7 +79,7 @@ baseline_filter <- function(shp, position = "MIX", out_points) {
     st_write(shp2, out_points)
 
   } else{
-    print("ERROR")
+    stop("Baseline position or input shapefile are not correct")
   }
 }
 
