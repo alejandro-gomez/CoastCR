@@ -5,3 +5,4 @@
 .CRAN-SUBMISSION
 ._pkgdown.yml
 docs
+tests
