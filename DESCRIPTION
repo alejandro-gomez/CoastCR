@@ -2,20 +2,19 @@ Package: CoastCR
 Type: Package
 Version: 1.2.0
 Title: Coastal Changes Estimation Based on Baseline and Transect Approach
-Authors@R: c(
-  person("Alejandro", "Gomez-Pazo", , "a.gomez@usc.es", role = c("aut", "cre"),
-  comment = c(ORCID = "0000-0002-7974-3207")),
-  person("Andres", "Payo", , "agarcia@bgs.ac.uk", role = c("aut"),
-  comment = c(ORCID = "0000-0001-5596-3953")),
-  person("M.Victoria", "Paz-Delgado", role = "aut"))
+Authors@R: 
+    person("Alejandro", "Gomez-Pazo", email = "a.gomez@usc.es", role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-7974-3207")),
+    person("Andres", "Payo", email = "agarcia@bgs.ac.uk", role = c("aut"),
+        comment = c(ORCID = "0000-0001-5596-3953")),
+    person("M.Victoria", "Paz-Delgado", role = "aut")
 Maintainer: Alejandro Gomez-Pazo <a.gomez@usc.es>
 Description: Computing coastline time series and trend analysis using the
-  baseline and transect approach. This tool is a part of ODSAS
-  (Open Digital Shoreline Analysis System v1.0) introduced in
-  Gomez-Pazo et al. (2021) <doi:10.3390/jmse10010026>.
-License: GPL (>=3)
-URL: https://github.com/alejandro-gomez/CoastCR,
-    https://alejandro-gomez.github.io/CoastCR/
+    baseline and transect approach. This tool is a part of ODSAS
+    (Open Digital Shoreline Analysis System v1.0) introduced in
+    Gomez-Pazo et al. (2021) <doi:10.3390/jmse10010026>.
+License: GPL (>= 3)
+URL: https://github.com/alejandro-gomez/CoastCR
 BugReports: https://github.com/alejandro-gomez/CoastCR/issues
 Encoding: UTF-8
 Imports: sf, dplyr, tidyverse, tidyr, stringr, qwraps2, psych
