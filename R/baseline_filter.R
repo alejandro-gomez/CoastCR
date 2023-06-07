@@ -79,7 +79,7 @@ baseline_filter <- function(shp, position = "MIX", out_points) {
     st_write(shp2, out_points)
 
   } else{
-    stop("Baseline position or input shapefile are incorrect")
+    stop("Baseline position or input shapefile are not correct")
   }
 }
 
