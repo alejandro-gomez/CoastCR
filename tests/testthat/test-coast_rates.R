@@ -9,7 +9,7 @@ test_that("coast_rates", {
 
   inter_dist <- st_read(system.file("./extdata/dist.shp", package = "CoastCR"))
 
-  dist <- st_read(system.file("./extdata/normals_coast_rates.shp", package = "CoastCR"))
+  dist <- st_read(system.file("./extdata/normals_coast_rate.shp", package = "CoastCR"))
 
   out_name <- "./normals_coast_rates.shp"
 
