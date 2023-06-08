@@ -38,16 +38,15 @@
 #' @examples
 #' library(sf)
 #' library(CoastCR)
-#' setwd(tempdir())
 #'
 #' #Normal lines shapefile
-#' normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
+#' normals <- st_read(system.file("extdata/normals.shp", package = "CoastCR"))
 #'
 #' #Table with dates and associated uncertainty
-#' table <- read.csv(system.file("./extdata/table_coastlines.csv", package = "CoastCR"))
+#' table <- read.csv(system.file("extdata/table_coastlines.csv", package = "CoastCR"))
 #'
 #' #Filtered intersections shapefile
-#' inter_dist <- st_read(system.file("./extdata/dist.shp", package = "CoastCR"))
+#' inter_dist <- st_read(system.file("extdata/dist.shp", package = "CoastCR"))
 #'
 #' #Define output name
 #' out_name <- tempfile("normals_coast_rates", fileext = ".shp")

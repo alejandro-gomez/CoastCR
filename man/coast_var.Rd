@@ -41,16 +41,15 @@ The second step estimates the main coastal variation rates explained in detail i
 #Load libraries
 library(sf)
 library(CoastCR)
-setwd(tempdir())
 
 #Intersections shapefile
-shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
+shp <- st_read(system.file("extdata/intersect.shp", package = "CoastCR"))
 
 #Normal lines shapefile
-normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
+normals <- st_read(system.file("extdata/normals.shp", package = "CoastCR"))
 
 #Table with dates and associated uncertainty
-table <- read.csv(system.file("./extdata/table_coastlines.csv", package = "CoastCR"))
+table <- read.csv(system.file("extdata/table_coastlines.csv", package = "CoastCR"))
 
 #Define baseline position. Offshore = OFF; Onshore = ON; Mixed = MIX.
 position = "OFF"

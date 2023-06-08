@@ -1,9 +1,7 @@
 test_that("coast_rates", {
   testthat::skip_on_cran()
 
-  test_dir <- tempdir()
-
-  setwd(test_dir)
+  setwd(tempdir())
 
   normals <- st_read(system.file("./extdata/normals.shp", package = "CoastCR"))
 
@@ -20,7 +18,5 @@ test_that("coast_rates", {
   res <- st_read("./normals_coast_rates.shp")
 
   expect_equal(res, dist, tolerance = 0.0009)
-
-  unlink(test_dir, recursive = TRUE)
 
 })

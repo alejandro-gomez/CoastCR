@@ -1,9 +1,7 @@
 test_that("baseline_filter", {
   testthat::skip_on_cran()
 
-  test_dir <- tempdir()
-
-  setwd(test_dir)
+  setwd(tempdir())
 
   shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
 
@@ -18,7 +16,5 @@ test_that("baseline_filter", {
   res <- st_read("./inters_filter1.shp")
 
   expect_equal(res, dist, tolerance = 0.0009)
-
-  unlink(test_dir, recursive = TRUE)
 
 })

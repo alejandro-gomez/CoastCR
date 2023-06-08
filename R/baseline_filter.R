@@ -29,10 +29,9 @@
 #' #Load libraries
 #' library(sf)
 #' library(CoastCR)
-#' setwd(tempdir())
 #'
 #' #Intersections shapefile
-#' shp <- st_read(system.file("./extdata/intersect.shp", package = "CoastCR"))
+#' shp <- st_read(system.file("extdata/intersect.shp", package = "CoastCR"))
 #'
 #' #Define baseline position. Offshore = OFF; Onshore = ON; Mixed = MIX.
 #' position = "OFF"
